@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" name="submit" value="submit">
+</form>
+{{ data }}
+{% endblock %}

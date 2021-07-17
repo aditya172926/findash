@@ -7,9 +7,11 @@
         </title>
     </head>
     <body>
+        {% block body %}
         This is a plot
         {% autoescape off %}
         {{ plot_div }}
         {% endautoescape %}
+        {% endblock %}
     </body>
 </html>
