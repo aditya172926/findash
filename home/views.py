@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from plotly.offline import plot
 from plotly.graph_objs import Scatter
-import yfinance as yf
 from .forms import StockQueryForm
+from .stock_utility import get_stock_data
+from .plots_utility import plot_candlestick
 
 def indexplot(request):
     xdata = [0,1,2,3,4,5]
@@ -25,9 +26,8 @@ class GetStockData(TemplateView):
     def post(self, request):
         form = StockQueryForm(request.POST)
         if form.is_valid():
-            start = request.POST['start']
-            end = request.POST['end']
-            ticker = request.POST['ticker']
-        data = yf.download(ticker, start, end)
-        args = {'form': form, 'data': data}
+            data = get_stock_data(request.POST['start'], request.POST['end'], request.POST['ticker'])
+            plot_div = plot_candlestick(data, request.POST['ticker'])
+        
+        args = {'form': form, 'data': data, 'plot_div': plot_div}
         return render(request, self.template_name, args)
