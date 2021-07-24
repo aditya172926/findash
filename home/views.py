@@ -13,6 +13,7 @@ def indexplot(request):
                 marker_color = 'green')], output_type='div', include_plotlyjs=False, show_link=False)
     args = {'plot_div': plot_div}
     return render(request, 'index.html', args)
+    
 
 class GetStockData(TemplateView):
     template_name = 'home/stock.html'
@@ -28,6 +29,5 @@ class GetStockData(TemplateView):
         if form.is_valid():
             data = get_stock_data(request.POST['start'], request.POST['end'], request.POST['ticker'])
             plot_div = plot_candlestick(data, request.POST['ticker'])
-        
-        args = {'form': form, 'data': data, 'plot_div': plot_div}
+        args = {'form': form, 'plot_div': plot_div}
         return render(request, self.template_name, args)

@@ -6,7 +6,17 @@
     {{ form }}
     <input type="submit" name="submit" value="submit">
 </form>
-{{ data }}
+
+<!-- {% if data %}
+    {% for i in data %}
+        <tr>
+            <td>{{ i.Open }}</td>
+            <td>{{ i.High }}</td>
+            <td>{{ i.Low }}</td>
+            <td>{{ i.Close }}</td>
+        </tr>
+    {% endfor %}
+{% endif %} -->
 
 {% autoescape off %}
     {{ plot_div }}

@@ -8,6 +8,9 @@
     </head>
     <body>
         {% block body %}
+
+        <button type="button"><a href="{% url 'stock' %}">Stocks</a></button>
+
         This is a plot
         {% autoescape off %}
         {{ plot_div }}
