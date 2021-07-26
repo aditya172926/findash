@@ -1,6 +1,8 @@
 {% extends 'index.html' %}
 
 {% block body %}
+<button type="button"><a href="{% url 'index' %}">Index Page</a></button>
+
 <form action="" method="POST">
     {% csrf_token %}
     {{ form }}

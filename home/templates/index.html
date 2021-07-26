@@ -6,11 +6,11 @@
             dashboard 2
         </title>
     </head>
-    <body>
+    <body style="background-color: black; color: white;">
         {% block body %}
 
         <button type="button"><a href="{% url 'stock' %}">Stocks</a></button>
-
+        <br>
         This is a plot
         {% autoescape off %}
         {{ plot_div }}
