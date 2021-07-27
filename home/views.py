@@ -5,7 +5,7 @@ from plotly.graph_objs import Scatter
 from .forms import StockQueryForm, CsvFiles
 from .stock_utility import get_stock_data
 from .plots_utility import Plotting_graphs
-from django.core.files.storage import default_storage
+from .models import StockCsvFiles
 
 # def indexplot(request):
 #     # xdata = [0,1,2,3,4,5]
@@ -41,8 +41,10 @@ class GetStockData(TemplateView):
     template_name = 'home/stock.html'
     def get(self, request):
         form = StockQueryForm()
+        stock_files = StockCsvFiles.objects.all()
         args = {
-            'form': form
+            'form': form,
+            'stock_files': stock_files
         }
         return render(request, self.template_name, args)
 

@@ -7,11 +7,11 @@ class StockQueryForm(forms.Form):
     ticker = forms.CharField()
 
 class CsvFiles(forms.ModelForm):
-    description = forms.Textarea()
     csv_file = forms.FileField()
+    description = forms.Textarea()
     class Meta:
         model = StockCsvFiles
         fields = (
-            'description',
-            'csv_file'
+            'csv_file',
+            'description'
         )

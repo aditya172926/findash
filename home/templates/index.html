@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <title>
-            dashboard 2
-        </title>
-    </head>
-    <body style="background-color: black; color: white;">
-        {% block body %}
 
-        <button type="button"><a href="{% url 'stock' %}">Stocks</a></button>
-        <br>
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>
+        dashboard 2
+    </title>
+</head>
 
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" name="submit" value="submit">
-        </form>
+<body style="background-color: black; color: white;">
+    {% block body %}
 
-        This is a plot
-        {% autoescape off %}
-        {{ plot_div }}
-        {% endautoescape %}
-        {% endblock %}
-    </body>
+    <button type="button"><a href="{% url 'stock' %}">Stocks</a></button>
+    <br><br>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="uploadfileform">
+            {% load widget_tweaks %}
+            <div class="formPart">
+                <label for="{{ form.csv_file.id_for_label }}">Csv File</label>
+                {{ form.csv_file }}
+                {{ form.csv_file.errors }}
+            </div><br>
+            <div class="formPart">
+                <label for="{{ form.description.id_for_label }}">Description</label><br>
+                {{ form.description }}
+                {{ form.description.errors }}
+            </div>
+        </div>
+        <input type="submit" name="submit" value="submit">
+    </form>
+
+    This is a plot
+    {% autoescape off %}
+    {{ plot_div }}
+    {% endautoescape %}
+    {% endblock %}
+</body>
+
 </html>

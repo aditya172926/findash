@@ -8,6 +8,10 @@
     {{ form }}
     <input type="submit" name="submit" value="submit">
 </form>
+<br>
+{% for stock in stock_files %}
+    {{ stock.csv_file }}<br>
+{% endfor %}
 
 {% autoescape off %}
     {{ bar_plot_div }}
