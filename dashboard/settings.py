@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'home',
     'widget_tweaks',
     'django_cleanup',
-    'rest_framework'
 ]
 
 MIDDLEWARE = [

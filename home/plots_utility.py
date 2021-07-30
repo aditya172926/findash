@@ -2,6 +2,7 @@ import plotly.graph_objs as go
 from plotly.offline import plot
 from plotly.graph_objs import Candlestick
 import plotly.express as px
+import pandas as pd
 
 
 class Plotting_graphs:
@@ -83,3 +84,9 @@ class Plotting_graphs:
         fig = px.area(self.data, x=self.data.index, y=self.data['Close'])
         plot_html = plot(fig, output_type='div', include_plotlyjs=False, show_link=False)
         return plot_html
+        
+def plot_csv_file(file_name):
+    data = pd.read_csv(file_name)
+    fig = go.Figure([go.Scatter(x = data.index, y=data['Close'])])
+    plot_html = plot(fig, output_type='div', include_plotlyjs=False, show_link=False)
+    return plot_html

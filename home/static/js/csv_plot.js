@@ -9,8 +9,8 @@ function getApiPlot() {
         url: url,
         data: send_data,
         success: function(result) {
-            console.log('Success');
-            console.log(result);
+            $("#plot_csv").html("");
+            $("#plot_csv").append(result);
         },
         error: function(response) {
             console.log('error');

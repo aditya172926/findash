@@ -1,14 +1,12 @@
-from django.http.response import HttpResponse
+from os import read
+from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .forms import StockQueryForm, CsvFiles
-from .stock_utility import get_stock_data
-from .plots_utility import Plotting_graphs
+from .stock_utility import get_stock_data, read_csv_file
+from .plots_utility import Plotting_graphs, plot_csv_file
 from .models import StockCsvFiles
-from .serializers import StockCsvSerializers
-from rest_framework.generics import ListAPIView
 import pandas as pd
-from django.db.models import Q
 
 
 
@@ -26,10 +24,15 @@ class DashboardIndex(TemplateView):
     template_name = 'index.html'
     def get(self, request):
         form = CsvFiles()
-        args = {'form': form}
+        csv_files = StockCsvFiles.objects.all()
+        args = {
+            'form': form,
+            'csv_files': csv_files
+            }
         return render(request, self.template_name, args)
     def post(self, request):
         form = CsvFiles(request.POST, request.FILES)
+        csv_files = StockCsvFiles.objects.all()
         if form.is_valid():
             # csv_file = request.FILES['csv_file']
             # csv_file_name = default_storage.save(csv_file.name, csv_file)
@@ -37,7 +40,7 @@ class DashboardIndex(TemplateView):
             form.save()
         args = {
             'form': form,
-            'text': 'done'
+            'csv_files': csv_files
         }
         return render(request, self.template_name, args)
     
@@ -76,12 +79,8 @@ class GetStockData(TemplateView):
 #     # csv_files = StockCsvFiles.objects.all()
 #     data = pd.read_csv
 
-
-class ReadDataView(ListAPIView):
-    serializer_class = StockCsvSerializers
-    def get_queryset(self):
-        name = self.request.query_params.get('name', None)
-        print(name)
-        querylist = StockCsvFiles.objects.filter(csv_file = name)
-        print(querylist)
-        return querylist
+def ReadDataView(request):
+    if request.method == 'GET' and request.is_ajax():
+        files = StockCsvFiles.objects.all()
+        plot_div = plot_csv_file(files[0].csv_file.path)
+        return JsonResponse(plot_div, status=200, safe=False)
