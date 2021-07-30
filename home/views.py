@@ -1,11 +1,16 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from plotly.offline import plot
-from plotly.graph_objs import Scatter
 from .forms import StockQueryForm, CsvFiles
 from .stock_utility import get_stock_data
 from .plots_utility import Plotting_graphs
 from .models import StockCsvFiles
+from .serializers import StockCsvSerializers
+from rest_framework.generics import ListAPIView
+import pandas as pd
+from django.db.models import Q
+
+
 
 # def indexplot(request):
 #     # xdata = [0,1,2,3,4,5]
@@ -66,3 +71,17 @@ class GetStockData(TemplateView):
                 'area_plot_div': area_plot_div
             }
         return render(request, self.template_name, args)
+
+# def StockCsvplot(request):
+#     # csv_files = StockCsvFiles.objects.all()
+#     data = pd.read_csv
+
+
+class ReadDataView(ListAPIView):
+    serializer_class = StockCsvSerializers
+    def get_queryset(self):
+        name = self.request.query_params.get('name', None)
+        print(name)
+        querylist = StockCsvFiles.objects.filter(csv_file = name)
+        print(querylist)
+        return querylist

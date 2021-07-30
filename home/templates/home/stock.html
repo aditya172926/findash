@@ -1,5 +1,9 @@
 {% extends 'index.html' %}
 
+{% block head %}
+<script src="\static\js\csv_plot.js"></script>
+{% endblock %}
+
 {% block body %}
 <button type="button"><a href="{% url 'index' %}">Index Page</a></button>
 
@@ -10,8 +14,14 @@
 </form>
 <br>
 {% for stock in stock_files %}
-    {{ stock.csv_file }}<br>
+    {{ stock.csv_file.url }}<br>
 {% endfor %}
+
+<div id="list_data">
+    <div class="detail__content" style="display: block;" id="listing">
+        <button type="button" id="readbutton" onclick="getApiPlot()">Read data</button>
+    </div>
+</div>
 
 {% autoescape off %}
     {{ bar_plot_div }}

@@ -5,3 +5,4 @@ def get_stock_data(start, end, ticker):
     if data is not None:
         print('Got data for ticker {}'.format(ticker))
     return data
+

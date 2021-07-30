@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'widget_tweaks',
+    'django_cleanup',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
