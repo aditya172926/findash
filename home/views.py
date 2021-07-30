@@ -38,11 +38,12 @@ class DashboardIndex(TemplateView):
             # csv_file_name = default_storage.save(csv_file.name, csv_file)
             # file_url = default_storage.url(csv_file_name)
             form.save()
-        args = {
-            'form': form,
-            'csv_files': csv_files
-        }
-        return render(request, self.template_name, args)
+            form = CsvFiles()
+            args = {
+                'form': form,
+                'csv_files': csv_files
+            }
+            return render(request, self.template_name, args)
     
 
 class GetStockData(TemplateView):
@@ -81,6 +82,23 @@ class GetStockData(TemplateView):
 
 def ReadDataView(request):
     if request.method == 'GET' and request.is_ajax():
-        files = StockCsvFiles.objects.all()
-        plot_div = plot_csv_file(files[0].csv_file.path)
+        graph_type = request.GET['graph_type']
+        stock_name = request.GET['name']
+        try:
+            files = StockCsvFiles.objects.filter(csv_file = stock_name)
+        except:
+            return JsonResponse('File not found', status=200, safe=False)
+
+        data = pd.read_csv(files[0].csv_file.path, index_col='Date', parse_dates=True)
+        pg = Plotting_graphs(data, stock_name)
+        if graph_type == 'scatterplot':
+            plot_div = pg.plot_scatter()
+        elif graph_type == 'candlestick':
+            plot_div = pg.plot_candlestick()
+        elif graph_type == 'barplot':
+            plot_div = pg.plot_bar()
+        elif graph_type == 'areaplot':
+            plot_div = pg.area_plot()
+        else:
+            return JsonResponse('Graph not found', status=200, safe=False)
         return JsonResponse(plot_div, status=200, safe=False)

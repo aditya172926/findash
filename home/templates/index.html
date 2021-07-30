@@ -4,6 +4,7 @@
 <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="\static\js\csv_plot.js"></script>
     {% block head %}
 
     {% endblock %}
@@ -19,10 +20,7 @@
     <button type="button"><a href="{% url 'stock' %}">Stocks</a></button>
     <br><br>
 
-    {% for csv_file in csv_files %}
-    {{ csv_file.csv_file }}<br>
-    {% endfor %}
-    <br>
+    
 
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -43,10 +41,31 @@
         <input type="submit" name="submit" value="submit">
     </form>
 
-    This is a plot
-    {% autoescape off %}
-    {{ plot_div }}
-    {% endautoescape %}
+    <div class="graphTypeButtons">
+        <button class="graphType" id="graph_type" value="candlestick">Candlestick</button>
+        <button class="graphType" id="graph_type" value="scatterplot">Scatter Plot</button>
+        <button class="graphType" id="graph_type" value="areaplot">Area Plot</button>
+        <button class="graphType" id="graph_type" value="barplot">Bar Plot</button>
+    </div>
+<br>
+    <div class="data_files">
+        {% for csv_file in csv_files %}
+        <button class="dataFiles" id="stock_name" value="{{ csv_file.csv_file }}">{{ csv_file.csv_file }}</button>
+        {% endfor %}
+    <br>
+    </div>
+
+    <!------------------------------------ Plotting div ------------------------------------>
+
+    <div id="list_data">
+        <button type="button" id="readbutton" onclick="getApiPlot()">Read data</button>
+    </div>
+
+    <div id="plot_csv">
+    
+    </div>
+    <!------------------------------------ Plotting div END ------------------------------------>
+
     {% endblock %}
 </body>
 

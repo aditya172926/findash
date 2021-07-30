@@ -86,7 +86,7 @@ class Plotting_graphs:
         return plot_html
         
 def plot_csv_file(file_name):
-    data = pd.read_csv(file_name)
+    data = pd.read_csv(file_name, index_col='Date', parse_dates=True)
     fig = go.Figure([go.Scatter(x = data.index, y=data['Close'])])
     plot_html = plot(fig, output_type='div', include_plotlyjs=False, show_link=False)
     return plot_html

@@ -1,11 +1,12 @@
 {% extends 'index.html' %}
 
 {% block head %}
-<script src="\static\js\csv_plot.js"></script>
 {% endblock %}
 
 {% block body %}
 <button type="button"><a href="{% url 'index' %}">Index Page</a></button>
+
+<h1>Here you can download and view graphs for a new stock or time periods</h1>
 
 <form action="" method="POST">
     {% csrf_token %}
@@ -16,14 +17,6 @@
 {% for stock in stock_files %}
     {{ stock.csv_file.url }}<br>
 {% endfor %}
-
-<div id="list_data">
-    <button type="button" id="readbutton" onclick="getApiPlot()">Read data</button>
-</div>
-
-<div id="plot_csv">
-    
-</div>
 
 {% autoescape off %}
     {{ bar_plot_div }}
