@@ -1,5 +1,7 @@
 import yfinance as yf
 import pandas as pd
+import numpy as np
+from .plots_utility import Plotting_graphs
 
 def get_stock_data(start, end, ticker):
     data = yf.download(ticker, start, end)
@@ -11,3 +13,18 @@ def read_csv_file(file_name):
     df = pd.read_csv(file_name)
     print(df.head())
     return 'Success'
+
+def calculate_returns(data, ticker, plot_type):
+    df = data[['Adj Close']].pct_change()
+    df.columns = ['Returns']
+    df.fillna(0, inplace=True)
+    if plot_type == 'volatility':
+        pg = Plotting_graphs(df, ticker, column_name='Returns')
+    elif plot_type == 'cumulative_returns':
+        cumulative_daily_return = (1+df).cumprod()
+        pg = Plotting_graphs(cumulative_daily_return, ticker, column_name='Returns')
+    else:
+        return 'Graph not found'
+    plot_div = pg.plot_scatter()
+    del(df)
+    return plot_div

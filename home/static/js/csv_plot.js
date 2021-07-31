@@ -1,5 +1,6 @@
 var send_data = {};
 var graph_divs = {};
+send_data['compare'] = false;
 
 $(document).ready(function() {
     $(document).on('click', '#graph_type', function(e) {

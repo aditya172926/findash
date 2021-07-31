@@ -6,9 +6,10 @@ import pandas as pd
 
 
 class Plotting_graphs:
-    def __init__(self, data, ticker):
+    def __init__(self, data, ticker, column_name = 'Close'):
         self.data = data
         self.ticker = ticker
+        self.column_name = column_name
         self.layout = dict(
                 title = ticker,
                 xaxis = dict(
@@ -36,7 +37,7 @@ class Plotting_graphs:
                     rangeslider=dict(visible=True),
                     type = "date"
                 ),
-                yaxis = go.layout.YAxis(title = go.layout.yaxis.Title(text = "Price US $")),
+                yaxis = go.layout.YAxis(title = go.layout.yaxis.Title(text = column_name)),
                 height=700,
             )
 
@@ -70,7 +71,7 @@ class Plotting_graphs:
         return plot_html
 
     def plot_scatter(self):
-        fig = go.Figure([go.Scatter(x = self.data.index, y=self.data['Close'])], layout = self.layout)
+        fig = go.Figure([go.Scatter(x = self.data.index, y=self.data[self.column_name])], layout = self.layout)
         plot_html = plot(fig, output_type='div', include_plotlyjs=False, show_link=False)
         return plot_html
 
@@ -85,6 +86,7 @@ class Plotting_graphs:
         plot_html = plot(fig, output_type='div', include_plotlyjs=False, show_link=False)
         return plot_html
         
+    
 def plot_csv_file(file_name):
     data = pd.read_csv(file_name, index_col='Date', parse_dates=True)
     fig = go.Figure([go.Scatter(x = data.index, y=data['Close'])])

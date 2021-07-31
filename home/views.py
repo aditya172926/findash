@@ -3,7 +3,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .forms import StockQueryForm, CsvFiles
-from .stock_utility import get_stock_data, read_csv_file
+from .stock_utility import *
 from .plots_utility import Plotting_graphs, plot_csv_file
 from .models import StockCsvFiles
 import pandas as pd
@@ -99,6 +99,10 @@ def ReadDataView(request):
             plot_div = pg.plot_bar()
         elif graph_type == 'areaplot':
             plot_div = pg.area_plot()
+        elif graph_type == 'volatility':
+            plot_div = calculate_returns(data, stock_name, graph_type)
+        elif graph_type == 'cumulative_returns':
+            plot_div = calculate_returns(data, stock_name, graph_type)
         else:
             return JsonResponse('Graph not found', status=200, safe=False)
         return JsonResponse(plot_div, status=200, safe=False)
