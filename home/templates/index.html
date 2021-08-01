@@ -2,9 +2,13 @@
 <html>
 
 <head>
+    {% load static %}
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="\static\js\csv_plot.js"></script>
+
+    <link rel="stylesheet" href="\static\css\index.css">
+
     {% block head %}
 
     {% endblock %}
@@ -15,12 +19,15 @@
 </head>
 
 <body style="background-color: black; color: white;">
-    {% block body %}
-
-    <button type="button"><a href="{% url 'stock' %}">Stocks</a></button>
-    <br><br>
-
     
+
+    <div class="topnav">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'stock' %}">Get Stocks Data</a>
+        <a href="#">MAC</a>
+    </div>
+    {% block body %}
+    <br><br>
 
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -46,8 +53,10 @@
         <button class="graphType" id="graph_type" value="scatterplot">Scatter Plot</button>
         <button class="graphType" id="graph_type" value="areaplot">Area Plot</button>
         <button class="graphType" id="graph_type" value="barplot">Bar Plot</button>
-        <button class="graphType" id="graph_type" value="volatility">volatility</button>
-        <button class="graphType" id="graph_type" value="cumulative_returns">Cumulative Returns</button>
+        <button class="graphType" id="graph_type" value="returns">Returns</button>
+        <button class="graphType" id="graph_type" value="cumulative_returns">Cumulative Returns</button><br>
+        <input type="text" id="window_length" />
+        <button class="graphType" id="graph_type" value="moving_average">Moving Average</button>
 
     </div>
 <br>
@@ -58,12 +67,7 @@
     <br>
     </div>
 
-    <!------------------------------------ Plotting div ------------------------------------>
-
-    <div id="list_data">
-        <button type="button" id="readbutton" onclick="getApiPlot()">Read data</button>
-    </div>
-
+    <!------------------------------------ Plotting div ---------------------------------------->
     <div id="plot_csv">
     
     </div>

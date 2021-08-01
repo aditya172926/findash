@@ -1,17 +1,21 @@
 {% extends 'index.html' %}
 
-{% block head %}
-{% endblock %}
-
 {% block body %}
-
-<h1>Here you can download and view graphs for a new stock or time periods</h1>
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" name="submit" value="submit">
 </form>
+
+<input type="date" id="start_date" />
+<input type="date" id="end_date" />
+<input type="text" id="ticker"/><br>
+<input type="text" id="short-window" />
+<input type="text" id="long_window" />
+
+
+
 <br>
 {% for stock in stock_files %}
     {{ stock.csv_file.url }}<br>

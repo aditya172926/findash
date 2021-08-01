@@ -1,22 +1,36 @@
 var send_data = {};
 var graph_divs = {};
-send_data['compare'] = false;
 
 $(document).ready(function() {
     $(document).on('click', '#graph_type', function(e) {
         e.preventDefault();
         var gt = $(this).val();
-        console.log(gt);
-        send_data['graph_type'] = gt;
-        if (send_data['name'] != null) {
-            if (graph_divs[gt] == null) {
-                getApiPlot();
+        if (gt == 'moving_average') {
+            var window_length = $('#window_length').val();
+            if (window_length == null) {
+                window_length = 10;
             }
-            else {
-                $("#plot_csv").html("");
-                $("#plot_csv").append(graph_divs[gt]);
+            console.log(window_length);
+            send_data['window_length'] = window_length + 'd';
+            send_data['graph_type'] = gt;
+            if (send_data['name'] != null) {
+                    getApiPlot();
             }
         }
+        else {
+            console.log(gt);
+            send_data['graph_type'] = gt;
+            if (send_data['name'] != null) {
+                if (graph_divs[gt] == null) {
+                    getApiPlot();
+                }
+                else {
+                    $("#plot_csv").html("");
+                    $("#plot_csv").append(graph_divs[gt]);
+                }
+            }
+        }
+        
     });
     $(document).on('click', '#stock_name', function(e) {
         e.preventDefault();
