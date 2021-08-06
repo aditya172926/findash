@@ -13,7 +13,7 @@ Navigate to the folder in your shell to reach the manage.py file and run the Dja
 Currently the data needs to be filled in the Admin portal to be visualized in the frontend.
 
 # Django Stock data plotting dashboard.
-
+<a href = 'https://github.com/aditya172926/django_analytics_dashboard/tree/dashboard2'>Here</a><br>
 This project has been an upgrade and is in the dashboard2 branch of this repository.<br>
 Clone the repository dashboar2 branch and run the project.<br>
 
