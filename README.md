@@ -1,4 +1,9 @@
+
+<i>This project is strictly for <u>education purposes</u> only, not for any type of advise for trading or investments of any kind.</i>
+
 # django_analytics_dashboard
+
+
 
 This is a dashboard for visualizing the data given as input in the admin panel of the dashboard.<br>
 The master branch uses flexmonster for plotting the data. The dashboard is made using the Django web framework and Python programming language.
