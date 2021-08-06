@@ -5,7 +5,7 @@ The master branch uses flexmonster for plotting the data. The dashboard is made 
 
 Create a virtual environment using the command `virtualenv dash`<br>
 Then activate the virtual environment using the command `dash\Scripts\activate` or `source dash/bin/activate` depending on your OS.<br>
-Clone this project using the command `git clone `<br>
+Clone this project using the command `git clone https://github.com/aditya172926/django_analytics_dashboard.git`<br>
 Then install the packages from the requirements.txt file using `pip install -r requirements.txt` or if you have multiple versions of python installed you can use `pip3 install -r requirements.txt`.<br>
 
 Navigate to the folder in your shell to reach the manage.py file and run the Django server using `python manage.py runserver` or `python3 manage.py runserver`.<br>
