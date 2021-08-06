@@ -1,4 +1,7 @@
 # django_analytics_dashboard
+
+<i>This project is strictly for <u>education purposes</u> only, not for any type of advise for trading or investments of any kind.</i>
+
 This is the 2nd dashboard version. We implemented more features in this dashboard and make future versions for mostly finance related tasks.
 
 This project has been an upgrade and is in the dashboard2 branch of this repository.<br>
