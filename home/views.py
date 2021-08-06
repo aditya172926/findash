@@ -2,7 +2,7 @@ from os import read
 from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .forms import StockQueryForm, CsvFiles
+from .forms import StockQueryForm, CsvFiles, MovingAverageCrossover
 from .stock_utility import *
 from .plots_utility import Plotting_graphs, plot_csv_file
 from .models import StockCsvFiles
@@ -111,3 +111,26 @@ def ReadDataView(request):
             return JsonResponse('Graph not found', status=200, safe=False)
         return JsonResponse(plot_div, status=200, safe=False)
 
+class GenerateMAC(TemplateView):
+    template_name = 'home/mac.html'
+    def get(self, request):
+        form = MovingAverageCrossover()
+        args = {
+            'form': form
+        }
+        return render(request, self.template_name, args)
+
+    def post(self, request):
+        form = MovingAverageCrossover(request.POST)
+        if form.is_valid():
+            ticker = request.POST['ticker']
+            short_window = request.POST['short_window']
+            long_window = request.POST['long_window']
+
+            data = get_stock_data(request.POST['start'], request.POST['end'], ticker)
+            plot_div = calculate_moving_average_crossover(data, ticker, short_window, long_window)
+        args = {
+            'form': form,
+            'plot_div': plot_div
+        }
+        return render(request, self.template_name, args)

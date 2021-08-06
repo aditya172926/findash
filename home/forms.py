@@ -15,3 +15,10 @@ class CsvFiles(forms.ModelForm):
             'csv_file',
             'description'
         )
+
+class MovingAverageCrossover(forms.Form):
+    start = forms.DateTimeField()
+    end = forms.DateTimeField()
+    ticker = forms.CharField()
+    short_window = forms.IntegerField()
+    long_window = forms.IntegerField()

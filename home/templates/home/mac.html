@@ -8,24 +8,10 @@
     <input type="submit" name="submit" value="submit">
 </form>
 
-<input type="date" id="start_date" />
-<input type="date" id="end_date" />
-<input type="text" id="ticker"/><br>
-<input type="text" id="short-window" />
-<input type="text" id="long_window" />
-
-
-
 <br>
-{% for stock in stock_files %}
-    {{ stock.csv_file.url }}<br>
-{% endfor %}
 
 {% autoescape off %}
-    {{ bar_plot_div }}
-    {{ candlestick_plot_div }}
-    {{ scatter_plot_div }}
-    {{ area_plot_div }}
+    {{ plot_div }}
 {% endautoescape %}
 
 {% endblock %}
