@@ -24,3 +24,20 @@
     background-color: #04AA6D;
     color: white;
   }
+  .fileDescription {
+    height: 2rem;
+  }
+  form {
+    text-align: center;
+  }
+  .uploadFile {
+    width: 20%;
+    font-size: large;
+  }
+  .graphTypeButtons, .data_files {
+    text-align: center;
+  }
+  .graphType, .dataFiles {
+    width: 20%;
+    font-size: large;
+  }

@@ -18,54 +18,61 @@
 
 </head>
 
-<body style="background-color: black; color: white;">
+<body style="background-color: black; color: white; padding: 0% 5% 0% 5%;">
     
 
     <div class="topnav">
         <a href="{% url 'index' %}">Home</a>
-        <a href="{% url 'stock' %}">Get Stocks Data</a>
+        <a href="{% url 'stock' %}">Data</a>
         <a href="{% url 'get_mac' %}">MAC</a>
     </div>
     {% block body %}
     <br><br>
-
+    <h2 style="text-align: center;">Upload your CSV file</h2>
+    <br>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.non_field_errors }}
         <div class="uploadfileform">
             {% load widget_tweaks %}
             <div class="formPart">
-                <label for="{{ form.csv_file.id_for_label }}">Csv File</label>
+                <label for="{{ form.csv_file.id_for_label }}">Upload Csv File:</label>
                 {{ form.csv_file }}
                 {{ form.csv_file.errors }}
             </div><br>
             <div class="formPart">
                 <label for="{{ form.description.id_for_label }}">Description</label><br>
-                {{ form.description }}
+                {{ form.description|add_class:"fileDescription" }}
                 {{ form.description.errors }}
+                <br><br>
             </div>
         </div>
-        <input type="submit" name="submit" value="submit">
+        <input class="uploadFile" type="submit" name="submit" value="submit">
     </form>
-
-    <div class="graphTypeButtons">
-        <button class="graphType" id="graph_type" value="candlestick">Candlestick</button>
-        <button class="graphType" id="graph_type" value="scatterplot">Scatter Plot</button>
-        <button class="graphType" id="graph_type" value="areaplot">Area Plot</button>
-        <button class="graphType" id="graph_type" value="barplot">Bar Plot</button>
-        <button class="graphType" id="graph_type" value="returns">Returns</button>
-        <button class="graphType" id="graph_type" value="cumulative_returns">Cumulative Returns</button><br>
-        <input type="text" id="window_length" />
-        <button class="graphType" id="graph_type" value="moving_average">Moving Average</button>
-
-    </div>
-<br>
+    <br><br>
+    <h1 style="text-align: center;"><b><u>OR</u></b></h1>
+    <br><br>
+    <h2 style="text-align: center;">Select from these!</h2>
+    <br>
     <div class="data_files">
         {% for csv_file in csv_files %}
         <button class="dataFiles" id="stock_name" value="{{ csv_file.csv_file }}">{{ csv_file.csv_file }}</button>
         {% endfor %}
     <br>
     </div>
+    <br>
+    <div class="graphTypeButtons">
+        <button class="graphType" id="graph_type" value="candlestick">Candlestick</button>
+        <button class="graphType" id="graph_type" value="scatterplot">Scatter Plot</button>
+        <button class="graphType" id="graph_type" value="areaplot">Area Plot</button>
+        <button class="graphType" id="graph_type" value="barplot">Bar Plot</button>
+        <button class="graphType" id="graph_type" value="returns">Returns</button>
+        <button class="graphType" id="graph_type" value="cumulative_returns">Cumulative Returns</button><br><br>
+        <input type="text" id="window_length" />
+        <button class="graphType" id="graph_type" value="moving_average">Moving Average</button>
+
+    </div>
+<br>
 
     <!------------------------------------ Plotting div ---------------------------------------->
     <div id="plot_csv">
