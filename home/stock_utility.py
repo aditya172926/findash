@@ -15,7 +15,6 @@ def get_stock_data(start, end, ticker):
 
 def read_csv_file(file_name):
     df = pd.read_csv(file_name)
-    print(df.head())
     return 'Success'
 
 def calculate_returns(data, ticker, plot_type):
@@ -36,7 +35,6 @@ def calculate_returns(data, ticker, plot_type):
 def calculate_moving_average(data, ticker, window_length):
     moving_avg = data[['Adj Close']]
     moving_avg[window_length] = moving_avg.rolling(window_length).mean()
-    print(moving_avg)
     plot_div = plot_moving_average(moving_avg)
     return plot_div
 

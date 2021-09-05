@@ -105,7 +105,6 @@ def ReadDataView(request):
         elif graph_type == 'cumulative_returns':
             plot_div = calculate_returns(data, stock_name, graph_type)
         elif graph_type == 'moving_average':
-            print('Moving average selected with window length = ', request.GET['window_length'])
             plot_div = calculate_moving_average(data, stock_name,  request.GET['window_length'])
         else:
             return JsonResponse('Graph not found', status=200, safe=False)
