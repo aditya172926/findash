@@ -1,6 +1,8 @@
 # Data_and_Finance 
 👋 Hi! Add your python programs for applications in finance like Time series analysis, Trading Strategies, Data Analysis, Machine Learning and more.
 
+⭐ Star this repo for the support.
+
 ## ✌ Why this Repository?
 This repository gives beginners and newcomers in the field of AI, ML and Quants a chance to understand the inner workings of popular learning algorithms by presenting them with
 a simple to analyze the implementation of ML and DL algorithms in pure python using only numpy as a backend for linear algebraic computations for the sake of efficiency.
