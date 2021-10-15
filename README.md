@@ -1,5 +1,5 @@
-# Data_and_Finance
-Add your python programs for applications in finance like Time series analysis, Trading Strategies, Data Analysis, Machine Learning and more.
+# Data_and_Finance 
+👋 Hi! Add your python programs for applications in finance like Time series analysis, Trading Strategies, Data Analysis, Machine Learning and more.
 
 ## Why this Repository?
 This repository gives beginners and newcomers in the field of AI, ML and Quants a chance to understand the inner workings of popular learning algorithms by presenting them with
