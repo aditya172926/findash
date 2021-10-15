@@ -32,3 +32,5 @@ Read the [CONTRIBUTIONS](https://github.com/aditya172926/Data_and_Finance/blob/m
 5) Commit your changes `git add -A` to stage your changes and `git commit -m "DESCRIPTION OF CHANGES"` to commit them.
 6) Push your changes to your fork `git push origin BRANCH_NAME`
 7) Create the pull request to this repository.
+
+<b> After Successful approval of Pull request add your name in [contributor](https://github.com/aditya172926/Data_and_Finance/blob/master/contributors.md) file.
