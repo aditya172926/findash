@@ -55,3 +55,7 @@ __Algorithms in this repo should not be how-to examples for existing Python pack
 - Focus hard on naming conventios of functions, classes and variables. Help your reader by using descriptive names that will help you to remove redundant comments.
 - Code submission require docstrings or comments to describe your work.
 - If you used a Wikipedia article or some other source material to create your algorithm, please add the URL in a docstring or comment to help your reader.
+
+## Most Importantly
+- Be consistent in the use of these guidelines
+- Happy Coding
