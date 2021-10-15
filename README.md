@@ -33,7 +33,7 @@ Read the [CONTRIBUTIONS](https://github.com/aditya172926/Data_and_Finance/blob/m
 6) Push your changes to your fork `git push origin BRANCH_NAME`
 7) Create the pull request to this repository.
 
-<b> After Successful approval of Pull request add your name in [contributor](https://github.com/aditya172926/Data_and_Finance/blob/master/contributors.md) file.</b>
+<b> After Successful approval of Pull request add your name here and in [contributor](https://github.com/aditya172926/Data_and_Finance/blob/master/contributors.md) file.</b>
  
 ### Programs Added
 | Name | Project |
