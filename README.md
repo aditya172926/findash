@@ -8,7 +8,7 @@ This repository will be a place to contribute and look into the world how progra
 
 <b>Your Algorithms can be a very simple and beginner friendly to a competitive and game changer in real world applications as well.</b>
 
-## What you should contribute?
+## What you should contribute? Read the [CONTRIBUTIONS](https://github.com/aditya172926/Data_and_Finance/blob/master/CONTRIBUTING.md)
 Contribute your Scripts or applications implementing the algorithms in following domains:- 
 - Finance
 - Financial Data Analysis
@@ -24,6 +24,7 @@ You can even refer Kaggle if you want to do any analysis from any dataset. But t
 <b> Valid Pull requests will be counted towards Hacktoberfest 2021</b>
 
 ## Contributing to the repository
+Read the [CONTRIBUTIONS](https://github.com/aditya172926/Data_and_Finance/blob/master/CONTRIBUTING.md)
 1) Fort the Repository to create a copy of the project repository in your GitHub account. In the upper left corner, you will see the button to fork.
 2) Clone your fork 
 3) Create a new branch using `git checkout -b BRANCH_NAME`
