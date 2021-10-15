@@ -4,8 +4,7 @@
 ⭐ Star this repo for the support.
 
 ## ✌ Why this Repository?
-This repository gives beginners and newcomers in the field of AI, ML and Quants a chance to understand the inner workings of popular learning algorithms by presenting them with
-a simple to analyze the implementation of ML and DL algorithms in pure python using only numpy as a backend for linear algebraic computations for the sake of efficiency.
+This repository gives beginners and newcomers in the field of AI, ML and Quants a chance to understand the inner workings of popular learning algorithms with their implementation in python.
 This repository will be a place to contribute and look into the world how programming can change the way trading happens and who has an edge over whom.
 
 ✍ <b>Your Algorithms can be a very simple and beginner friendly to a competitive and game changer in real world applications as well.</b>
