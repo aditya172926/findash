@@ -1,6 +1,8 @@
 # Data_and_Finance 
 👋 Hi! Add your python programs for applications in finance like Time series analysis, Trading Strategies, Data Analysis, Machine Learning and more.
 
+Link to the FinDash Project -> [Findash Project](https://findash1729.herokuapp.com/)
+
 ⭐ Star this repo for the support.
 
 ## ✌ Why this Repository?
